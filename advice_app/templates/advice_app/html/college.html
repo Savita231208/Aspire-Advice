@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>college</title>
+    {%include 'advice_app/common/common_css.html'%}
+</head>
+<body>
+    {% include 'advice_app/common/header.html'%}
+    {% for co in  college_key %}
+    <div class="card" style="width: 18rem;">
+        <img src="/media/{{co.college_icon}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{co.college_name}}</h5>
+          <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Code:{{co.college_code}}</li>
+          <li class="list-group-item">CITY{{co.college_city}}</li>
+          <li class="list-group-item">EMAIL{{co.college_email}}</li> 
+          <li class="list-group-item">PHONE{{co.college_phone}}</li> 
+          <li class="list-group-item">ADDRESS{{co.college_address}}</li> 
+          <li class="list-group-item">WEBSITE{{co.college_website}}</li> 
+          <li class="list-group-item">RATING{{co.college_rating}}</li> 
+        </ul>
+      {%endfor%}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+{% include 'advice_app/common/footer.html' %}
+</html>

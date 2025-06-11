@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inbox</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function(){ 
+        $("button").click(function(){
+          
+        var message_id = $(this).val();
+
+        $.ajax({
+            url: "/show_message/",
+            data:{
+                'msg_id': message_id
+            },
+            dataType: 'json',
+            success: function(data){
+                // if(data.m1_key){
+                    alert(data.m1_key);
+                    document.getElementById("message_dialog"+message_id).innerText=data.m1_key
+                    
+                //}
+
+            
+
+        
+                }
+            
+
+            
+                });
+
+        
+        })
+    }) 
+    </script>
+    <style>
+        .heading{
+            text-align: center;
+            color: rgb(3, 11, 18); 
+            font-weight: 700 ; 
+            font-family: 'Times New Roman';  
+            padding-top: 10px; 
+            padding-bottom: 10px; 
+            font-size: 40px;
+        }
+    </style>
+    {%include 'advice_app/common/common_css.html'%}
+</head>
+<body>
+    {%include 'advice_app/student/std_header.html'%}
+    
+    <div class="container-fluid">
+        <h1 class="heading">
+            Inbox
+        </h1>
+    </div>
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">S.No.</th>
+            <th scope="col">Sender</th>
+            <th scope="col">Subject</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for m in obj_key%}
+          <tr>
+            <th scope="row">1</th>
+            <td>{{m.sender_id}}</td>
+            
+            <td>
+              <button type="button" class="btn btn-primary"  value={{m.id}} data-bs-toggle="modal" data-bs-target="#my_dialog{{m.id}}">
+                {{m.subject}}
+                  </button>
+           </td>
+            <td>{{m.date}}</td>
+          </tr>
+          <!-- Modal -->
+          <div class="modal fade" id="my_dialog{{m.id}}"  data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Message for {{m.subject}}</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="message_dialog{{m.id}}">
+                
+                  {{m.message}}
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">OK</button>
+                
+                </div>
+              </div>
+            </div>
+          </div>
+          {%endfor%}
+          <!-- <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+          </tr> -->
+        </tbody>
+      </table>
+
+
+      {% include 'advice_app/common/footer.html' %}
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

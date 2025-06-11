@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>course</title>
+    {%include 'advice_app/common/common_css.html'%}
+</head>
+<body>
+    {% include 'advice_app/common/header.html'%}
+    {% for c in course_key %}
+    <div class="card" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">NAME:{{c.course_name}}</li>
+          <li class="list-group-item">DURATION:{{c.duration}}</li>
+          <li class="list-group-item">FEES:{{c.fees}}</li>
+          <li class="list-group-item">COURSE:{{c.about_course}}</li>
+          <li class="list-group-item">OPTION:{{c.career_option}}</li>
+          <li class="list-group-item">CRITERIA:{{c.eligibility_criteria}}</li>
+          <li class="list-group-item">SUBJECT:{{c.subjects_offered}}</li>
+          
+        </ul>
+      </div>
+      {%endfor%}
+
+
+      {% include 'advice_app/common/footer.html' %}
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+      
+</body>
+</html>

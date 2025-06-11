@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ComposeMessage</title>
+   
+    <style>
+        .heading{
+            text-align: center;
+            color: rgb(3, 11, 18); 
+            font-weight: 700 ; 
+            font-family: 'Times New Roman';  
+            padding-top: 10px; 
+            padding-bottom: 10px; 
+            font-size: 40px;
+        }
+        .input_box{
+            text-align: center; 
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        .label_style{
+            text-align: center;
+            color: rgb(18, 19, 20); 
+            font-weight: 600 ; 
+            font-family: cursive; 
+            font-size: 25px;
+            margin-bottom: 10px;
+            
+        }
+        .form_div{ 
+            padding: 5%;
+            border: 2px solid rgb(7, 23, 199); 
+            text-align: center;
+            background-color: rgb(162, 223, 245); 
+            
+            border-radius: 20px;
+            
+        }
+    </style>
+      {%include 'advice_app/common/common_css.html'%}
+</head>
+<body>
+    {%if messages%}
+    {%for m in messages%}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{m}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {%endfor%}
+    {%endif%}
+    {%include 'advice_app/student/std_header.html'%}
+    <div class="container-fluid">
+        <h1 class="heading">
+            Compose Message
+        </h1>
+    </div>
+    <div class="form_div" style="width: 40%; margin-left: auto; margin-right: auto;" >
+        <form method="post" action="/s_compose/">
+            {% csrf_token %}
+        <div class="row form_div">
+            <div class="col-5 label_style">
+                <label for="receiver_id" class="form-label">Receiver ID</label>
+            </div>
+            <div class="col-7 input_box">
+                <input type="text" name="receiver_id" id="receiver_id" placeholder="Enter receiver id" class="form-control" required>
+            </div>
+
+            <div class="col-5 label_style">
+                <label for="subject" class="form-label">Subject</label>
+            </div>
+            <div class="col-7 input_box">
+                <input type="text" name="subject" id="subject" placeholder="Enter subject" class="form-control" required>
+            </div>
+            
+            <div class="col-5 label_style">
+                <label for="message" class="form-label">Message</label>
+            </div>
+            <div class="col-7 input_box">
+                <textarea name="message" id="message" rows="4" placeholder="Enter your message" class="form-control" required></textarea>
+            </div>
+        
+            <div class="text-center label_style">
+                <button class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+
+        </form>
+    </div>
+    <br><br><br><br><br>
+    {% include 'advice_app/common/footer.html' %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+   
+</body>
+</html>

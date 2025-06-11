@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASPIRE_ADVICE</title>
+    {%include 'advice_app/common/common_css.html'%}
+    
+    <style>
+        .w-100{
+            height:50vh;
+        }
+        .fb-box{
+          border-radius: 50%;
+          display: inline-block;
+          padding: 10px;
+          transition: transform 0.3s ease;
+        }
+        .fb-box:hover{
+          transform:scale(1.1);
+        }
+        .carousel-inner{
+          width: 90%;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .fb_box{
+          float: left;
+          border: 2px solid white;
+          width: 25%;
+          height: 220px;
+          background-color: rgba(124, 21, 242, 0.436); 
+          
+          /* border-color:darkblue ; */
+          box-shadow:  0 0 20px white;
+          margin-left: 40px;
+          margin-right: 40px;
+          
+
+        }
+        .fb_box:hover{
+          border-radius: 50%;
+          display: inline-block;
+          
+        }
+        
+        
+    </style>
+</head>
+<body class="backg">
+    {% include 'advice_app/common/header.html'%}
+
+    {% comment %} carousel code start {% endcomment %}
+    <div id="carouselExampleCaptions"  class="carousel slide ">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{% static  'advice_app/images/home1.png' %}" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'advice_app/images/tt.jpg'%}" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'advice_app/images/cc.jpg'%}" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      
+    
+
+
+    
+        <!-- {% comment %} carousel code start {% endcomment %} -->
+      
+    <div class="fb_block" style="margin-bottom: 300px;">
+      <h2 style="text-align: center; color: black; font-family: cursive; margin-top: 50px;">Feedbacks </h2>
+      <a  href="{{'/more_feedback/'}}">ViewMore</a>
+      
+      {%for f in feedback_key%}
+
+      <div class="fb_box" style="margin-bottom: 100px;">
+        <div style="padding: 50px; color: white;">
+        <h5 style="text-decoration: underline;">{{f.name}}</h5>
+        <h6>Rating: {{f.ratings}}</h6>
+        <div><p> Remarks: {{f.remarks}}</p></div>
+        
+        <h6 style="text-align: end;">-{{f.date}}</h6>
+      </div>
+      </div>
+
+      {%endfor%}
+
+
+ 
+ </div>
+ 
+</div>
+
+
+ 
+<div class="row">
+  <div class="col-6 " style="margin-bottom: 100px;">
+  <div class="card ">
+    
+  
+    <div class="card-body">
+      <h5 class="card-title" style="font-weight: bold; color: blueviolet; font-size: 30px;">Discipline</h5>
+      <p class="card-text" style="font-family: cursive;"> Discipline in education aims to instill values of respect, 
+        responsibility, and self-control among students. 
+        By modeling and reinforcing these behaviors, educators help 
+        students develop essential skills for academic and personal success.</p>
+      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+    </div>
+  </div>
+  
+  <div class="card" aria-hidden="true">
+    <img src="{% static 'advice_app/images/dis.jpg'%}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title placeholder-glow">
+        <span class="placeholder col-6"></span>
+      </h5>
+      <p class="card-text placeholder-glow">
+        <span class="placeholder col-7"></span>
+        <span class="placeholder col-4"></span>
+        <span class="placeholder col-4"></span>
+        <span class="placeholder col-6"></span>
+        <span class="placeholder col-8"></span>
+      </p>
+      <a class="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
+    </div>
+  </div>
+</div>
+<div class="col-6 " style="margin-bottom: 100px;">
+  <div class="card ">
+    
+  
+    <div class="card-body">
+      <h5 class="card-title" style="font-weight: bold; color: blueviolet; font-size: 30px;">Consistency</h5>
+      <p class="card-text" style="font-family: cursive;"> Consistency in studying is crucial for academic success. By maintaining a regular study schedule,
+       setting aside dedicated time for learning, and adhering to it without fail, students can improve their focus, retention, and overall performance.</p>
+      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+    </div>
+  </div>
+  
+  <div class="card" aria-hidden="true">
+    <img src="{% static 'advice_app/images/consistent.png'%}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title placeholder-glow">
+        <span class="placeholder col-6"></span>
+      </h5>
+      <p class="card-text placeholder-glow">
+        <span class="placeholder col-7"></span>
+        <span class="placeholder col-4"></span>
+        <span class="placeholder col-4"></span>
+        <span class="placeholder col-6"></span>
+        <span class="placeholder col-8"></span>
+      </p>
+      <a class="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
+    </div>
+  </div>
+</div>
+</div>
+
+ 
+     
+
+    {% include 'advice_app/common/footer.html' %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> 
+
+</body>
+</html>

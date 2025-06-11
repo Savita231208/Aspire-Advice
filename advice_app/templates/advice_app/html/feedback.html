@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    
+    {%include 'advice_app/common/common_css.html'%}
+    <style>
+        .bg_img{
+            background-image: url("{% static 'advice_app/images/L.svg' %}");
+            height: 700px;
+            width: 100%;
+            background-size: cover;
+            
+        }
+        .heading{
+            text-align: center;
+            color: rgb(3, 11, 18); 
+            font-weight: bold; 
+            font-family: Georgia, 'Times New Roman', Times, serif; 
+            padding-top: 30px; 
+            padding-bottom: 30px; 
+            font-size: 40px;
+            margin-top: 50px;
+            
+        }
+        .input_box{
+            text-align: center; 
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        .label_style{
+            text-align: center;
+            color: rgb(11, 12, 12); 
+            font-weight: 600 ; 
+            font-family: cursive; 
+            font-size: 30px;
+            margin-bottom: 20px;
+            
+        }
+        .form_div{ 
+            padding: 5%;
+            border: 2px solid black; 
+            text-align: center;
+            background-color: rgba(102, 136, 205, 0.489); 
+            
+            border-radius: 20px;
+            
+            
+        }
+        .container {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+        }
+        
+        .item {
+          width: 70px;
+          height: 90px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          user-select: none;
+        }
+        .radio {
+          display: none;
+        } 
+        .radio ~ span {
+          font-size: 3rem;
+          filter: grayscale(100);
+          cursor: pointer;
+          transition: 0.3s;
+        }
+        
+        .radio:checked ~ span {
+          filter: grayscale(0);
+          font-size: 4rem;
+        }
+
+    </style>
+</head>
+<body class="bg_img">
+    {% include 'advice_app/common/header.html'%}
+    {%if messages%}
+    {%for m in messages%}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong >{{m}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+
+
+    {%endfor%}
+
+    {%endif%}
+    
+
+    <div class="container-fluid">
+        <h1 class="heading">
+            Feedback Form
+        </h1>
+    </div>
+    <div>
+        
+        <div class="form_div" style="width: 40%;float: left; margin-left: 450px; margin-bottom: 150px;" >
+            <form    method="POST" action="/feedback/">
+                {% csrf_token %}
+            <div class="row form_div">
+                <div class="col-4 label_style">
+                    <label for="username" class="form-label">Name</label>
+                </div>
+                <div class="col-8 input_box">
+                    <input type="text" name="name" id="username" placeholder="Enter your name" class="form-control" required>
+                </div>
+
+                <div class="col-4 label_style">
+                    <label for="useremail" class="form-label">Email</label>
+                </div>
+                <div class="col-8 input_box">
+                    <input type="email" name="email" id="useremail" placeholder="Enter your email" class="form-control" required>
+                </div>
+                <div class="col-4 label_style">
+                    <label for="remarks" class="form-label">Remarks</label>
+                </div>
+                <div class="col-8 input_box">
+                    <input type="text" name="remarks" id="remarks" placeholder="Please write remarks..." class="form-control" required>
+                </div>
+                 <div class="col-12">
+            <h2 style="margin-left: 50px; font-family: cursive; font-weight: bold; color: rgb(249, 250, 251);">Please provide your feedback:</h2>
+
+
+            <div class="container">
+                <div class="item">
+                  <label For="0">
+                  <input class="radio" type="radio" name="ratings" id="0" value="⭐"=required/>
+                  <span>😒</span>
+                </label>
+                </div>
+                
+            
+                <div class="item">
+                  <label For="1">
+                  <input class="radio" type="radio" name="ratings" id="1" value="⭐⭐"/>
+                  <span>&#128567;</span>
+                </label>
+                </div>
+            
+                <div class="item">
+                  <label For="2">
+                  <input class="radio" type="radio" name="ratings" id="2" value="⭐⭐⭐"/>
+                  <span>😎</span>
+                </label>
+                </div>
+            
+                <div class="item">
+                  <label For="3">
+                  <input class="radio" type="radio" name="ratings" id="3" value="⭐⭐⭐⭐"/>
+                  <span>&#128522;</span>
+                </label>
+                </div>
+            
+                <div class="item">
+                  <label For="4">
+                  <input class="radio" type="radio" name="ratings" id="4" value="⭐⭐⭐⭐⭐"/>
+                  <span>&#128516;</span>
+                </label>
+                </div>
+            
+              </div>
+              
+    
+        </div>
+            
+                <div class="text-center label_style">
+                    <button class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+
+            </form>
+        </div>
+    </div>
+    {% include 'advice_app/common/footer.html' %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

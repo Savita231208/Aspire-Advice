@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         .tips-form {
+            background-color: #e4a08f;
+            padding: 20px;
+            border: 1px solid #090909;
+            border-radius: 5px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+    </style>
+    {%include 'advice_app/common/common_css.html'%}
+</head>
+<body>
+    {%if messages%}
+    {%for m in messages%}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong >{{m}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+
+
+    {%endfor%}
+
+    {%endif%}
+    
+    {%include 'advice_app/user/coun_header.html'%}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="tips-form">
+                    <h2>--------Tips---------</h2>
+                    <form method="post" action="/add_tips/">
+                        {%csrf_token%}
+                        <div class="form-group">
+                            <label for="topicField">Topic:</label>
+                            <input type="text" class="form-control" id="topicField"  name="topic" placeholder="Enter topic">
+                        </div>
+                        <div class="form-group">
+                            <label for="contentField">Content:</label>
+                            <textarea class="form-control" id="contentField" rows="5"  name="contents"placeholder="Enter content"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+
+   {% include 'advice_app/common/footer.html' %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

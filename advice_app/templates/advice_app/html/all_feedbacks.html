@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All_feedbacks</title>
+    {%include 'advice_app/common/common_css.html'%}
+</head>
+<body>
+    {% include 'advice_app/common/header.html'%}
+     <h1 style="text-align: center; color: rgb(169, 13, 146); font-family: cursive;">Students Feedback</h1>
+    <div class="row">
+        {%for f in feedback_key%}
+        <div class='col-4'>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{f.name}}</h5>
+              <p class="card-text">{{f.remarks}}</p>
+              <p class="card-text">{{f.ratings}}</p>
+            </div>
+          </div>
+        </div>
+        {%endfor%} 
+       </div>
+
+    
+
+
+
+    {% include 'advice_app/common/footer.html' %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

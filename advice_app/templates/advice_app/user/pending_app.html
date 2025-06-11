@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PendingAppointment</title>
+    {%include 'advice_app/common/common_css.html'%}
+
+<style>
+    .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .form-container label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .form-container textarea, .form-container input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+        .form-container input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+</style>
+</head>
+<body>
+    {%include 'advice_app/user/coun_header.html'%}
+    {%if messages%}
+    {%for m in messages%}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{m}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {%endfor%}
+    {%endif%} 
+     
+    {%if  appointment_key%}
+    <form method="POST" action="/pending_app/">
+        {% csrf_token %}
+                      
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Select</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Message</th>
+            <th scope="col">Date</th>
+
+          </tr>
+        </thead>
+        <tbody>
+            {% for a in appointment_key%}
+          <tr>
+        <th scope="row"> <input type="radio" name="aid" value="{{a.id}}"></th>
+            <td>{{a.stu_detail.st_name}}</td>
+            <td>{{a.stu_detail.st_email}}</td>
+            <td>{{a.stu_detail.st_phone}}</td>
+            <td>{{a.message}}</td>
+            <td>{{a.date}}</td>
+
+          </tr>
+          {%endfor%}
+          </tbody>
+    </table>
+    
+</div>
+ <div class="form-container">
+<label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" placeholder="Enter your message"></textarea>
+            
+            <input type="submit" value="Submit">
+           
+
+        </div> 
+        
+    
+    </form>
+
+{%else%}
+<h2>No pending appointments</h2>
+
+{%endif%}
+
+
+
+    {% include 'advice_app/common/footer.html' %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+</body>
+</html>

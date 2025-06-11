@@ -1,0 +1,78 @@
+{%load static %}
+<style>
+    .nav-link{
+        color: rgb(239, 235, 235);
+        font-size: 25px;
+        font-family:'Times New Roman';
+        
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+    
+    .dropdown-item{
+        color: rgb(108, 104, 104);
+        font-size: 20px;
+        font-family: 'Times New Roman';
+    }
+    
+</style>
+<nav class="navbar navbar-expand-lg " style="background-color:#0e17c88b; height: 80px;" >
+    <div class="container-fluid  ">
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{'/'}}">
+                <i style="color: azure;" class="fas fa-home"></i>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{'/aboutus/'}}">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{'/contactus/'}}">Contact Us</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="{{'/feedback/'}}">Feedback</a>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link" href="{{'/events/'}}">Updates</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{'/college/'}}">College</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{'/course/'}}">Course</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{'/tips/'}}">Tips</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Login
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{{'/student_login/'}}">Student</a></li>
+              <li><a class="dropdown-item" href="{{'/coun_login/'}}">Counsellor</a> </li>
+              
+
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Registration
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{{'/user_registration/'}}">Counsellor</a></li>
+              <li><a class="dropdown-item" href="{{'/stu_registration/'}}">Student</a></li>
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+  </div>
+  </nav>

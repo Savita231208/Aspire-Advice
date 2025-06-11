@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppointmentStatus</title>
+    <style>
+        .heading{
+            text-align: center;
+            color: rgb(3, 11, 18); 
+            font-weight: 700 ; 
+            font-family: 'Times New Roman';  
+            padding-top: 10px; 
+            padding-bottom: 10px; 
+            font-size: 40px;
+        }
+    </style>
+    {%include 'advice_app/common/common_css.html'%}
+</head>
+<body>
+    {%include 'advice_app/student/std_header.html'%}
+    
+    <div class="container-fluid">
+        <h1 class="heading">
+            Appointment Status
+        </h1>
+    </div>
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Message</th>
+            <th scope="col">Date</th>
+
+          </tr>
+        </thead>
+        <tbody>
+            {% for a in appointment_key%}
+          <tr>
+            <th scope="row">{{a.cou_detail.c_name}}</th>
+            <td>{{a.cou_detail.c_email}}</td>
+            <td>{{a.cou_detail.c_phone}}</td>
+            <td>{{a.coun_ans}}</td>
+            <td>{{a.date}}</td>
+
+          </tr>
+          {%endfor%}
+          <!-- <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+          </tr> -->
+        </tbody>
+      </table>
+
+
+      {% include 'advice_app/common/footer.html' %}
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
